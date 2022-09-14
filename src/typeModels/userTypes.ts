@@ -4,4 +4,10 @@ export interface IUserDB {
     password: string;
 }
 
-export type TUserBody = Omit<IUserDB, 'id'>
+export interface IUserBody {
+    email: string;
+    password: string;
+    confirmPassword:string;
+}
+
+export type TUserInsertDB = Omit<IUserDB,'id'>
