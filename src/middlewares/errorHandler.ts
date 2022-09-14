@@ -12,6 +12,7 @@ export default function errorHandler(error: CustomError, req: Request, res: Resp
         case 'NotFound':
             return res.status(404).send(error.message)
         default:
+            console.log(error.message)
             return res.status(500).send('Server encountered an error')
     }
 }
