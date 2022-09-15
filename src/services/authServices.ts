@@ -52,3 +52,10 @@ function generateToken(payload:number) {
     })
     return token
 }
+
+export async function verifyUserExists (id:number) {
+    const user = await userRepository.findById(id)
+    if(!user){
+        throw {status:'NotFound', message:'No users were found with given id'}
+    }
+}

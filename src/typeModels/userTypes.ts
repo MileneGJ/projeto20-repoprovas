@@ -10,4 +10,8 @@ export interface IUserBody {
     confirmPassword:string|null;
 }
 
+export interface IUserToken {
+    id:number
+}
+
 export type TUserInsertDB = Omit<IUserDB,'id'>

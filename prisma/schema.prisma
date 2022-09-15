@@ -11,52 +11,61 @@ datasource db {
 }
 
 model Users {
-  id Int @id @default(autoincrement())
-  email String @unique
-  password String
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
 }
 
 model Terms {
-  id Int @id @default(autoincrement())
-  number Int @unique
+  id          Int           @id @default(autoincrement())
+  number      Int           @unique
+  createdAt   DateTime      @default(now())
   disciplines Disciplines[]
 }
 
 model Teachers {
-  id Int @id @default(autoincrement())
-  name String @unique
+  id                  Int                   @id @default(autoincrement())
+  name                String                @unique
+  createdAt           DateTime              @default(now())
   teachersDisciplines TeachersDisciplines[]
 }
 
 model Disciplines {
-  id Int @id @default(autoincrement())
-  name String @unique
-  terms Terms @relation(fields:[termId],references: [id])
-  termId Int
+  id                  Int                   @id @default(autoincrement())
+  name                String                @unique
+  terms               Terms                 @relation(fields: [termId], references: [id])
+  termId              Int
+  createdAt           DateTime              @default(now())
   teachersDisciplines TeachersDisciplines[]
 }
 
 model TeachersDisciplines {
-  id Int @id @default(autoincrement())
-  disciplines Disciplines @relation(fields: [disciplineId], references: [id])
+  id           Int         @id @default(autoincrement())
+  disciplines  Disciplines @relation(fields: [disciplineId], references: [id])
   disciplineId Int
-  teachers Teachers @relation(fields: [teacherId],references: [id])
-  teacherId Int
-  tests Tests[]
+  teachers     Teachers    @relation(fields: [teacherId], references: [id])
+  teacherId    Int
+  createdAt    DateTime    @default(now())
+  tests        Tests[]
+
+  @@unique([teacherId,disciplineId])
 }
 
 model Categories {
-  id Int @id @default(autoincrement())
-  name String @unique
-  tests Tests[]
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  tests     Tests[]
 }
 
 model Tests {
-  id Int @id @default(autoincrement())
-  name String
-  pdfUrl String
-  categories Categories @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  id                  Int                 @id @default(autoincrement())
+  name                String
+  pdfUrl              String              @unique
+  categories          Categories          @relation(fields: [categoryId], references: [id])
+  categoryId          Int
   teachersDisciplines TeachersDisciplines @relation(fields: [teacherDisciplineId], references: [id])
   teacherDisciplineId Int
+  createdAt           DateTime            @default(now())
 }

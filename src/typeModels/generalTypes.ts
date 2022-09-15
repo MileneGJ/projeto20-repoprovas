@@ -1,4 +1,6 @@
+type AppErrorTypes = "Conflict" | "NotFound" | "Unauthorized" | "InvalidInput";
+
 export interface CustomError {
-    status:string;
+    status:AppErrorTypes;
     message:string;    
 }

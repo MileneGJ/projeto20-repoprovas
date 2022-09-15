@@ -12,3 +12,8 @@ export async function findByEmail (email:string):Promise<IUserDB> {
     const user = await prisma.users.findFirst({where:{email}})
     return user as IUserDB
 }
+
+export async function findById (id:number):Promise<IUserDB> {
+    const user = await prisma.users.findFirst({where:{id}})
+    return user as IUserDB
+}
