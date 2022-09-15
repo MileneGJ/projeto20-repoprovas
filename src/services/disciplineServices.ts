@@ -3,7 +3,7 @@ import * as userService from '../services/authServices'
 import * as termService from '../services/termServices'
 import { IDisciplineDB, TDisciplineReturnDB } from '../typeModels/disciplineTypes'
 
-export async function getDisciplineIdFromDB (name:string):Promise<number> {
+export async function getDisciplineIdFromName (name:string):Promise<number> {
     const discipline = await disciplineRepository.findByName(name)
     if(!discipline){
         throw {status:'NotFound', message:'No disciplines were found with this name'}

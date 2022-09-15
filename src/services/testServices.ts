@@ -10,9 +10,9 @@ import * as termService from '../services/termServices'
 export async function createTest (test:ITestBody,userId:number) {
     await userService.verifyUserExists(userId)
     await verifyUrlInUse(test.pdfUrl)
-    const categoryId = await categoryService.getCategoryIdFromDB(test.category)
-    const teacherId = await teacherService.getTeacherIdFromDB(test.teacher)
-    const disciplineId = await disciplineService.getDisciplineIdFromDB(test.discipline)
+    const categoryId = await categoryService.getCategoryIdFromName(test.category)
+    const teacherId = await teacherService.getTeacherIdFromName(test.teacher)
+    const disciplineId = await disciplineService.getDisciplineIdFromName(test.discipline)
     const teacherDisciplineId = await teacherDisciplineService.getLinkId(teacherId,disciplineId)
     
     await testRepository.insert({
@@ -33,6 +33,13 @@ export async function findByTermAndDisciplineId (userId:number,termId:number,dis
     await userService.verifyUserExists(userId)
     await disciplineService.verifyDisciplineExists(disciplineId)
     await termService.verifyTermExists(termId)
-    const tests = await testRepository.findByDisciplineId(termId,disciplineId)
+    const tests = await testRepository.findByTermAndDisciplineId(termId,disciplineId)
+    return tests
+}
+
+export async function findByTeacherId (userId:number, teacherId:number) {
+    await userService.verifyUserExists(userId)
+    await teacherService.verifyTeacherExists(teacherId)
+    const tests = await testRepository.findByTeacherId(teacherId)
     return tests
 }

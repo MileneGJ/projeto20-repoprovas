@@ -14,14 +14,27 @@ export interface ITestBody {
     teacher: string;
 }
 
-export interface ITestReturnDB {
+export interface ITestReturnDBTermDiscipline {
     name: string;
     pdfUrl: string;
     categories:{
         name:string;
-    }
+    };
     teachersDisciplines:{
         teachers:{
+            name:string;
+        }
+    }
+}
+
+export interface ITestReturnDBTeacher {
+    name: string;
+    pdfUrl: string;
+    categories:{
+        name:string;
+    };
+    teachersDisciplines:{
+        disciplines:{
             name:string;
         }
     }

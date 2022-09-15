@@ -7,5 +7,6 @@ const testRouter = Router()
 
 testRouter.post('/tests',schemaValidation(testSchema),testController.createTests)
 testRouter.get('/tests/:termId/:disciplineId',testController.getAllFromTermAndDisciplineId)
+testRouter.get('/tests/:teacherId',testController.getAllFromTeacherId)
 
 export default testRouter
