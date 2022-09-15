@@ -5,6 +5,7 @@ import * as categoryService from '../services/categoryServices'
 import * as teacherService from '../services/teacherServices'
 import * as disciplineService from '../services/disciplineServices'
 import * as teacherDisciplineService from '../services/teacherDisciplineServices'
+import * as termService from '../services/termServices'
 
 export async function createTest (test:ITestBody,userId:number) {
     await userService.verifyUserExists(userId)
@@ -26,4 +27,12 @@ async function verifyUrlInUse (pdfUrl:string) {
     if(testExists){
         throw {status:'Conflict', message:'This document url was already posted'}
     }
+}
+
+export async function findByTermAndDisciplineId (userId:number,termId:number,disciplineId:number) {
+    await userService.verifyUserExists(userId)
+    await disciplineService.verifyDisciplineExists(disciplineId)
+    await termService.verifyTermExists(termId)
+    const tests = await testRepository.findByDisciplineId(termId,disciplineId)
+    return tests
 }

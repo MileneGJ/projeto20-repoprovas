@@ -6,5 +6,6 @@ import * as testController from '../controllers/testControllers'
 const testRouter = Router()
 
 testRouter.post('/tests',schemaValidation(testSchema),testController.createTests)
+testRouter.get('/tests/:termId/:disciplineId',testController.getAllFromTermAndDisciplineId)
 
 export default testRouter

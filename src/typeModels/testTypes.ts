@@ -14,4 +14,17 @@ export interface ITestBody {
     teacher: string;
 }
 
+export interface ITestReturnDB {
+    name: string;
+    pdfUrl: string;
+    categories:{
+        name:string;
+    }
+    teachersDisciplines:{
+        teachers:{
+            name:string;
+        }
+    }
+}
+
 export type TTestInsertDB = Omit<ITestDB,'id'>

@@ -14,7 +14,7 @@ export default function tokenVerification (req:Request, res:Response, next:NextF
 }
 
 function jwtHandler (error:string|undefined, decoded:IUserToken|undefined):number {
-    if (error) throw {code:'Unauthorized',message:"Invalid token"};
+    if (error) throw {status:'Unauthorized', message:"Invalid token"};
     const success =  decoded as IUserToken
     return success.id;
 }
