@@ -7,8 +7,8 @@ import tokenVerification from "../middlewares/tokenVerification";
 const testRouter = Router()
 testRouter.use(tokenVerification)
 
-testRouter.post('/tests',schemaValidation(testSchema),testController.createTests)
-testRouter.get('/tests/:termId/:disciplineId',testController.getAllFromTermAndDisciplineId)
-testRouter.get('/tests/:teacherId',testController.getAllFromTeacherId)
+testRouter.post('/tests',tokenVerification,schemaValidation(testSchema),testController.createTests)
+testRouter.get('/tests/:termId/:disciplineId',tokenVerification,testController.getAllFromTermAndDisciplineId)
+testRouter.get('/tests/:teacherId',tokenVerification,testController.getAllFromTeacherId)
 
 export default testRouter

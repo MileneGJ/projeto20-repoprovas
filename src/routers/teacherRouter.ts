@@ -3,8 +3,7 @@ import * as teacherController from '../controllers/teacherControllers'
 import tokenVerification from "../middlewares/tokenVerification";
 
 const teacherRouter = Router()
-teacherRouter.use(tokenVerification)
 
-teacherRouter.get('/teachers',teacherController.getAllTeachers)
+teacherRouter.get('/teachers',tokenVerification,teacherController.getAllTeachers)
 
 export default teacherRouter
