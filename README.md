@@ -119,7 +119,7 @@ Finally, start the server:
 npm start
 ```
 
-You can now access the API's endpoints by navigating to `http://localhost:5000/` or the deployed version on `https://drivenpass-backend.herokuapp.com/`
+You can now access the API's endpoints by navigating to `http://localhost:5000/` or the deployed version on `https://projeto20-repoprovas-back-end.herokuapp.com`
 
 ## Database
 
