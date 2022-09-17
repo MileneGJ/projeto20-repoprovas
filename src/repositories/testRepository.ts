@@ -2,7 +2,7 @@ import prisma from "../database/database";
 import { TTestInsertDB, ITestDB, ITestReturnDBTermDiscipline, ITestReturnDBTeacher } from "../typeModels/testTypes";
 
 export async function insert(test: TTestInsertDB) {
-    await prisma.tests.create({ data: test })
+    return await prisma.tests.create({ data: test })
 }
 
 export async function findByPdfUrl(pdfUrl: string): Promise<ITestDB> {

@@ -3,7 +3,7 @@ import * as teacherDisciplineRepository from '../repositories/teacherDisciplineR
 export async function getLinkId (teacherId:number, disciplineId:number):Promise<number> {
     const link = await teacherDisciplineRepository.findByTeacherAndDisciplineIds(teacherId,disciplineId)
     if(!link){
-        throw {status:'NotFound', message:'Teacher is not associated with the discipline provided'}
+        throw {status:'Conflict', message:'Teacher is not associated with the discipline provided'}
     }
     return link.id
 } 

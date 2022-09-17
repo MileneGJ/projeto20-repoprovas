@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { CustomError } from "../typeModels/generalTypes";
 
 export default function errorHandler(error: CustomError, req: Request, res: Response, next: NextFunction) {
+    console.log(error.message)
     switch (error.status) {
         case 'InvalidInput':
             return res.status(422).send(error.message)
@@ -12,7 +13,7 @@ export default function errorHandler(error: CustomError, req: Request, res: Resp
         case 'NotFound':
             return res.status(404).send(error.message)
         default:
-            console.log(error.message)
+            
             return res.status(500).send('Server encountered an error')
     }
 }

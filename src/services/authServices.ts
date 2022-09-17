@@ -7,7 +7,7 @@ export async function createUser (user:IUserBody) {
     const {email,password:rawPassword,confirmPassword} = user
     await verifyEmailInUse(user.email)
     const password = await treatPassword(rawPassword,confirmPassword as string)
-    await userRepository.insert({email,password})
+    return await userRepository.insert({email,password})
 }
 
 async function verifyEmailInUse (email:string) {

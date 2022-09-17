@@ -15,7 +15,7 @@ export async function createTest (test:ITestBody,userId:number) {
     const disciplineId = await disciplineService.getDisciplineIdFromName(test.discipline)
     const teacherDisciplineId = await teacherDisciplineService.getLinkId(teacherId,disciplineId)
     
-    await testRepository.insert({
+    return await testRepository.insert({
         categoryId,
         teacherDisciplineId,
         name:test.name,
