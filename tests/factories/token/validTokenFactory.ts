@@ -10,6 +10,6 @@ export default async function validTokenFactory() {
         password:user.password
     }
     const result =  await supertest(app).post('/signin').send(modifiedUser)
-    console.log(result.body.token)
+    
     return result.body.token
 }
