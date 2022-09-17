@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test jest --runInBand",
+    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test jest -i",
     "build": "tsc",
-    "start": "node ./dist/server.js",
+    "start": "node dist/server.js",
     "dev": "nodemon ./src/server.ts"
   },
   "prisma": {
