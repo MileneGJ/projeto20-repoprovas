@@ -5,7 +5,6 @@ import * as testController from '../controllers/testControllers'
 import tokenVerification from "../middlewares/tokenVerification";
 
 const testRouter = Router()
-testRouter.use(tokenVerification)
 
 testRouter.post('/tests',tokenVerification,schemaValidation(testSchema),testController.createTests)
 testRouter.get('/tests/:termId/:disciplineId',tokenVerification,testController.getAllFromTermAndDisciplineId)
