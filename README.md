@@ -5,8 +5,8 @@
 </p>
 
 <p align = "center">
-   <img src="https://img.shields.io/badge/author-Milene_Jannetti-4dae71?style=flat-square" />
-   <img src="https://img.shields.io/github/languages/count/Milene_Jannetti/RepoProvas?color=4dae71&style=flat-square" />
+   <img src="https://img.shields.io/badge/author-MileneGJ-4dae71?style=flat-square" />
+   <img src="https://img.shields.io/github/languages/count/MileneGJ/projeto20-repoprovas?color=4dae71&style=flat-square" />
 </p>
 
 
